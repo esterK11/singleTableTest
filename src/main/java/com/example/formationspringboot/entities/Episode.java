@@ -16,7 +16,7 @@ import java.util.List;
 public class Episode extends MultimediaContent{
     private Integer numEpisode;
     @ManyToOne
-    @JoinColumn(name = "saisonId")
+    @JoinColumn(name = "saisonid")
 //    @JsonBackReference
 //    @JsonIgnore
     private MultimediaContent saisonId;
@@ -25,18 +25,18 @@ public class Episode extends MultimediaContent{
 //    @JsonManagedReference
     private List<Score> scores;
 
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "serieid")
-////    @JsonBackReference
-////    @JsonIgnore
-//    private MultimediaContent serieId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "serieid")
+//    @JsonBackReference
+//    @JsonIgnore
+    private MultimediaContent serieId;
 
-    public Episode(Long id, String titre, String description, String image1, Double duration, LocalDateTime created_at, LocalDateTime modified_at, Utilisateur addedBy, Integer numEpisode, MultimediaContent saisonId, List<Score> scores) {
+    public Episode(Long id, String titre, String description, String image1, Double duration, LocalDateTime created_at, LocalDateTime modified_at, Utilisateur addedBy, Integer numEpisode, MultimediaContent saisonId, List<Score> scores, MultimediaContent serieId) {
         super(id, titre, description, image1, duration, created_at, modified_at, addedBy);
         this.numEpisode = numEpisode;
         this.saisonId = saisonId;
         this.scores = scores;
-//        this.serieId = serieId;
+        this.serieId = serieId;
     }
 
     public Episode() {
@@ -54,10 +54,6 @@ public class Episode extends MultimediaContent{
         return saisonId;
     }
 
-    public void setSaisonId(Saison saisonId) {
-        this.saisonId = saisonId;
-    }
-
     public void setSaisonId(MultimediaContent saisonId) {
         this.saisonId = saisonId;
     }
@@ -70,11 +66,11 @@ public class Episode extends MultimediaContent{
         this.scores = scores;
     }
 
-//    public MultimediaContent getSerieId() {
-//        return serieId;
-//    }
-//
-//    public void setSerieId(MultimediaContent serieId) {
-//        this.serieId = serieId;
-//    }
+    public MultimediaContent getSerieId() {
+        return serieId;
+    }
+
+    public void setSerieId(MultimediaContent serieId) {
+        this.serieId = serieId;
+    }
 }

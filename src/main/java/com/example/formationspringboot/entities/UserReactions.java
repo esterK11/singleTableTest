@@ -23,7 +23,7 @@ public class UserReactions {
 
     public UserReactions(Utilisateur user, LocalDateTime created_at, LocalDateTime modified_at, MultimediaContent media) {
         this.user = user;
-        this.created_at = created_at;
+        this.created_at = created_at ;
         this.modified_at = modified_at;
         this.media = media;
     }

@@ -34,7 +34,7 @@ public class Saison extends MultimediaContent{
     //should be SET to avoid duplications
 
     @OneToMany(mappedBy = "media")
-    @JsonManagedReference
+//    @JsonManagedReference
     private List<Score> scores;
 
     public Saison() {
