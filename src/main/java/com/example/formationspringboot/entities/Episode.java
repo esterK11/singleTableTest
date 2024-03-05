@@ -2,7 +2,7 @@ package com.example.formationspringboot.entities;
 
 import com.example.formationspringboot.serializers.SaisonIdSerializer;
 import com.example.formationspringboot.serializers.SerieIdSerializer;
-import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import jakarta.persistence.*;
 
