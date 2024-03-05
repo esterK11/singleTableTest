@@ -1,10 +1,8 @@
 package com.example.formationspringboot.entities;
 
+import com.example.formationspringboot.serializers.SaisonIdSerializer;
 import com.example.formationspringboot.serializers.SerieIdSerializer;
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import jakarta.persistence.*;
 
@@ -20,7 +18,8 @@ public class Episode extends MultimediaContent{
     private Integer numEpisode;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "saisonId")
-    @JsonBackReference
+    @JsonSerialize(using = SaisonIdSerializer.class)
+//    @JsonBackReference
 //    @JsonIgnore
     private MultimediaContent saisonId;
 

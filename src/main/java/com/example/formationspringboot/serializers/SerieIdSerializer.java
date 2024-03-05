@@ -14,7 +14,6 @@ public class SerieIdSerializer extends JsonSerializer<MultimediaContent> {
             gen.writeStartObject();
             gen.writeObjectField("id", value.getId());
             gen.writeObjectField("titre", value.getTitre());
-            gen.writeObjectField("description", value.getTitre());
             gen.writeEndObject();
         } else {
             gen.writeNull();

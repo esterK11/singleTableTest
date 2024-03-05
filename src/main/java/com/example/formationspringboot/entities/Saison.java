@@ -1,9 +1,12 @@
 package com.example.formationspringboot.entities;
 
 import com.example.formationspringboot.entities.enums.StatutSaison;
+import com.example.formationspringboot.serializers.SaisonIdSerializer;
+import com.example.formationspringboot.serializers.SerieIdSerializer;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -16,6 +19,7 @@ import java.util.List;
         @NamedAttributeNode("episodes"),
         @NamedAttributeNode("scores")
 })
+
 @DiscriminatorValue("Saison")
 public class Saison extends MultimediaContent{
     private int nbrEpisodes;
@@ -24,12 +28,13 @@ public class Saison extends MultimediaContent{
     private StatutSaison statut;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "serieId")
-    @JsonBackReference
+    @JsonSerialize(using = SerieIdSerializer.class)
+//    @JsonBackReference
 //    @JsonIgnore
     private MultimediaContent serieId;
 
     @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "saisonId")
-    @JsonManagedReference
+//    @JsonManagedReference
     private List<Episode> episodes = new ArrayList<>();
     //should be SET to avoid duplications
 

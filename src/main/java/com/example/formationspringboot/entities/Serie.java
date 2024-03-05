@@ -1,7 +1,9 @@
 package com.example.formationspringboot.entities;
 
 
+import com.example.formationspringboot.serializers.SaisonIdSerializer;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -25,7 +27,8 @@ public class Serie extends MultimediaContent {
     private Integer nbrSaison;
     //OneToMany has fetchType.LAZY by default
     @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "serieId")
-    @JsonManagedReference
+
+//    @JsonManagedReference
     private List<Saison> saisons = new ArrayList<>();
 
     @OneToMany(mappedBy = "media")
