@@ -8,17 +8,21 @@ import com.fasterxml.jackson.databind.SerializerProvider;
 
 import java.io.IOException;
 
-public class SaisonIdSerializer extends JsonSerializer<Saison> {
+public class SaisonIdSerializer extends JsonSerializer<MultimediaContent> {
     @Override
-    public void serialize(Saison saison, JsonGenerator gen, SerializerProvider serializers) throws IOException {
-        // Commencer l'objet JSON
-        gen.writeStartObject();
-        // Écrire le champ 'id' dans le JSON avec l'ID de la saison
-        gen.writeObjectField("id", saison.getId());
-        // Écrire le champ 'titre' dans le JSON avec le titre de la saison
-        gen.writeObjectField("titre", saison.getTitre());
-        // Finir l'objet JSON
-        gen.writeEndObject();
+    public void serialize(MultimediaContent value, JsonGenerator gen, SerializerProvider serializers) throws IOException {
+        if (value != null) {
+            // Commencer l'objet JSON
+            gen.writeStartObject();
+            // Écrire le champ 'id' dans le JSON avec l'ID de la saison
+            gen.writeObjectField("id", value.getId());
+            // Écrire le champ 'titre' dans le JSON avec le titre de la saison
+            gen.writeObjectField("titre", value.getTitre());
+            // Finir l'objet JSON
+            gen.writeEndObject();
+        } else {
+            gen.writeNull();
+        }
     }
 
 
