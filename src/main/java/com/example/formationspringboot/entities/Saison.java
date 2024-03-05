@@ -23,13 +23,13 @@ public class Saison extends MultimediaContent{
     @Enumerated(EnumType.STRING)
     private StatutSaison statut;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "serieid")
-//    @JsonBackReference
+    @JoinColumn(name = "serieId")
+    @JsonBackReference
 //    @JsonIgnore
     private MultimediaContent serieId;
 
     @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "saisonId")
-//    @JsonManagedReference
+    @JsonManagedReference
     private List<Episode> episodes = new ArrayList<>();
     //should be SET to avoid duplications
 

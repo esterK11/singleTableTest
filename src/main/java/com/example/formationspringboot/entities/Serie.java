@@ -25,7 +25,7 @@ public class Serie extends MultimediaContent {
     private Integer nbrSaison;
     //OneToMany has fetchType.LAZY by default
     @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "serieId")
-//    @JsonManagedReference
+    @JsonManagedReference
     private List<Saison> saisons = new ArrayList<>();
 
     @OneToMany(mappedBy = "media")

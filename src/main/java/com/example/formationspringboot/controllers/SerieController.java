@@ -50,11 +50,12 @@ public class SerieController {
 
         return serieService.getSerieAndSaisons(SerieId);
     }
+/* Souad a mis en commentaire car doublon*/
 
-    @GetMapping("/saison/{id}")
-    public Saison getSaisonAndEpisodes(@PathVariable("SaisonId") Long SaisonId) {
-        return serieService.getSaisonAndEpisodes(SaisonId);
-    }
+//    @GetMapping("/saison/{id}")
+//    public Saison getSaisonAndEpisodes(@PathVariable("SaisonId") Long SaisonId) {
+//        return serieService.getSaisonAndEpisodes(SaisonId);
+//    }
 
 //        loading with named graphentity - ok
     @GetMapping("/season/{id}")
